@@ -1,10 +1,10 @@
 import { CreateUserService } from '@/modules/application/services'
-import { FindUserByEmailRepository } from '@/modules/data/contracts'
+import { FindUserByEmailRepository, SaveUserRepository } from '@/modules/data/contracts'
 import { UserAlreadyExistsError } from '@/modules/domain/error'
 import { MockProxy, mock } from 'jest-mock-extended'
 
 describe('CreateUserService', () => {
-    let userRepository: MockProxy<FindUserByEmailRepository>
+    let userRepository: MockProxy<FindUserByEmailRepository & SaveUserRepository>
     let sut: CreateUserService
     const input = {
         email: 'any_email',
@@ -27,4 +27,5 @@ describe('CreateUserService', () => {
         userRepository.findUserByEmail.mockResolvedValue({ id: '' })
         await expect(() => sut.execute(input)).rejects.toThrow(UserAlreadyExistsError)
     })
+    
 })
