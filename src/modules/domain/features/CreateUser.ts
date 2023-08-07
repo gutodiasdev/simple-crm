@@ -1,3 +1,5 @@
+import { UserAlreadyExistsError } from '../error'
+
 export interface CreateUser {
     execute(input: CreateUser.Input): Promise<CreateUser.Ouput>
 }
@@ -11,5 +13,5 @@ export namespace CreateUser {
     export type Ouput = {
         token: string
         refreshToken: string
-    }
+    } | UserAlreadyExistsError
 }

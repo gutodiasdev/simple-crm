@@ -1,6 +1,6 @@
-import { UserAlreadyExistsError } from '@/__tests__/modules/application/services/CreateUser.spec'
 import { FindUserByEmailRepository } from '@/modules/data/contracts'
-import { CreateUser } from '@/modules/domain'
+import { UserAlreadyExistsError } from '@/modules/domain/error'
+import { CreateUser } from '@/modules/domain/features'
 
 export class CreateUserService implements CreateUser {
     constructor(private readonly userRepository: FindUserByEmailRepository) {}
