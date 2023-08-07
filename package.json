@@ -9,7 +9,9 @@
     "lint": "next lint",
     "test": "jest --runInBand --no-cache --passWithNoTests",
     "test:watch": "yarn test --watch",
-    "test:coverage": "yarn test --coverage"
+    "test:staged": "yarn test --findRelatedTests",
+    "test:coverage": "yarn test --coverage",
+    "prepare": "husky install"
   },
   "dependencies": {
     "@types/node": "20.4.8",
