@@ -1,0 +1,12 @@
+version: '3.8'
+
+services:
+
+  database:
+    image: 'postgres'
+    environment:
+      - POSTGRES_USER=simplecrm
+      - POSTGRES_PASSWORD=simplecrm
+      - POSTGRES_DB=simplecrm
+    ports:
+      - '5435:5432'
