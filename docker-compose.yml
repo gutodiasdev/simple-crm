@@ -4,6 +4,7 @@ services:
 
   database:
     image: 'postgres'
+    container_name: simple-crm
     environment:
       - POSTGRES_USER=simplecrm
       - POSTGRES_PASSWORD=simplecrm
