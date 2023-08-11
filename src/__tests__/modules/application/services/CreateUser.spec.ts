@@ -1,6 +1,6 @@
 import { CreateUserService } from '@/modules/application/services'
 import { FindUserByEmailRepository, SaveUserRepository } from '@/modules/data/contracts'
-import { UserAlreadyExistsError } from '@/modules/domain/error'
+import { CreateUserError, UserAlreadyExistsError } from '@/modules/domain/error'
 import { GenerateUUID } from '@/modules/domain/features'
 import { MockProxy, mock } from 'jest-mock-extended'
 
@@ -40,5 +40,10 @@ describe('CreateUserService', () => {
             password: 'any_password',
             agreeWithPolicies: true
         })
+    })
+     
+    test('it should throw CreateUserError if CreateUserService fails to create new user', async () => {
+        userRepository.saveUser.mockRejectedValueOnce({})
+        await expect(() => sut.execute(input)).rejects.toThrow(CreateUserError)
     })
 })
